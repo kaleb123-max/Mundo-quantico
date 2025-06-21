@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mundo Quântico</title>
+  <style>
+    /* CSS incluso diretamente aqui para simplicidade */
+    :root {
+      --bg-dark: #0e1520;
+      --bg-light: #eef2f7;
+      --text-dark: #ecf0f1;
+      --text-light: #2c3e50;
+      --accent: #00bfff;
+      --card-bg-dark: rgba(30, 40, 55, 0.9);
+      --card-bg-light: rgba(255, 255, 255, 0.92);
+      --radius: 16px;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+    * {box-sizing: border-box;scroll-behavior: smooth;margin: 0;padding: 0;}
+    body {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-dark);color: var(--text-dark);padding-top: 80px;
+      overflow-x: hidden;transition: background 0.5s, color 0.5s;}
+    body.light {background: var(--bg-light);color: var(--text-light);}
+    .stars, .stars2, .stars3 {position: fixed;width: 100%;height: 100%;
+      top: 0;left: 0;background: transparent;z-index: -1;
+      animation: moveStars 200s linear infinite;}
+    .stars {background: url('https://raw.githubusercontent.com/kurtpetrek/starry-background/main/stars.png');}
+    .stars2 {background: url('https://raw.githubusercontent.com/kurtpetrek/starry-background/main/stars2.png');
+      animation-duration: 300s;}
+    .stars3 {background: url('https://raw.githubusercontent.com/kurtpetrek/starry-background/main/stars3.png');
+      animation-duration: 500s;}
+    @keyframes moveStars {from {background-position: 0 0;}
+      to {background-position: 10000px 5000px;}}
+    .sparkle {position: fixed;width: 2px;height: 2px;background: white;
+      border-radius: 50%;opacity: 0.8;animation: sparkle 2s infinite ease-in-out alternate;}
+    @keyframes sparkle {from {opacity: 0.2; transform: scale(1);}
+      to {opacity: 1; transform: scale(1.8);}}
+    header {position: fixed;top: 0;width: 100%;
+      background: rgba(255, 255, 255, 0.1);backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);padding: 15px 30px;z-index: 999;
+      display: flex;justify-content: space-between;align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);}
+    header h1 {font-size: 2em;color: var(--accent);}
+    nav a {margin-left: 25px;text-decoration: none;color: inherit;
+      font-weight: 600;transition: color 0.3s;}
+    nav a:hover {color: var(--accent);}
+    main {max-width: 1000px;margin: auto;padding: 30px 20px;}
+    section {background: var(--card-bg-dark);border-radius: var(--radius);
+      box-shadow: var(--shadow);padding: 35px;margin-bottom: 50px;
+      backdrop-filter: blur(8px);transition: transform 0.3s, background 0.5s;
+      animation: fadeIn 1s ease;}
+    body.light section {background: var(--card-bg-light);}
+    section:hover {transform: translateY(-4px);}
+    h2 {color: var(--accent);margin-top: 0;font-size: 1.8em;}
+    p, li {font-size: 1.05em;}
+    ul {padding-left: 25px;}
+    li {margin-bottom: 15px;}
+    .example {color: #7f8c8d;font-style: italic;font-size: 0.95em;}
+    footer {text-align: center;font-size: 0.9em;color: rgba(255, 255, 255, 0.8);
+      margin: 60px 0 30px 0;}
+    .back-top {position: fixed;bottom: 25px;right: 25px;
+      background: var(--accent);color: #fff;padding: 12px 18px;
+      border-radius: 50px;box-shadow: var(--shadow);cursor: pointer;
+      font-size: 1em;transition: background 0.3s, transform 0.3s;z-index: 1000;}
+    .back-top:hover {background: #005fa3;transform: translateY(-3px);}
+    .toggle-theme {background: var(--accent);border: none;color: white;
+      padding: 8px 15px;border-radius: 25px;cursor: pointer;font-size: 0.9em;
+      margin-left: 20px;transition: background 0.3s;}
+    .toggle-theme:hover {background: #005fa3;}
+    @keyframes fadeIn {from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}}
+    @media (max-width: 700px) {
+      header {flex-direction: column;align-items: flex-start;}
+      nav {margin-top: 10px;}
+      nav a {margin-left: 0;margin-right: 20px;}
+      section {padding: 25px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="stars2"></div>
+  <div class="stars3"></div>
+  <script>
+    const sparkles = 50;
+    for(let i=0;i<sparkles;i++) {
+      const s = document.createElement('div');
+      s.className = 'sparkle';
+      s.style.top = `${Math.random() * 100}%`;
+      s.style.left = `${Math.random() * 100}%`;
+      s.style.animationDelay = `${Math.random() * 5}s`;
+      document.body.appendChild(s);
+    }
+  </script>
+  <header>
+    <h1>🌌 Mundo Quântico</h1>
+    <nav>
+      <a href="#introducao">Início</a>
+      <a href="#estranhezas">Fenômenos</a>
+      <a href="#aplicacoes">Aplicações</a>
+      <button class="toggle-theme" onclick="toggleTheme()">🌗 Tema</button>
+    </nav>
+  </header>
+  <main>
+    <section id="introducao">
+      <h2>O que é o Mundo Quântico?</h2>
+      <p>O <strong>mundo quântico</strong> é estudado pela <strong>mecânica quântica</strong>...</p>
+    </section>
+    <section id="estranhezas">
+      <h2>🧠 Fenômenos Quânticos Inusitados</h2>
+      <ul>
+        <li><strong>Dualidade onda-partícula</strong>...</li>
+        <li><strong>Princípio da Incerteza de Heisenberg</strong>...</li>
+        <li><strong>Superposição</strong>...</li>
+        <li><strong>Emaranhamento quântico</strong>...</li>
+        <li><strong>Tunelamento quântico</strong>...</li>
+      </ul>
+    </section>
+    <section id="aplicacoes">
+      <h2>⚙️ Aplicações Reais da Mecânica Quântica</h2>
+      <ul>
+        <li><strong>Computadores quânticos</strong>...</li>
+        <li><strong>Criptografia quântica</strong>...</li>
+        <li><strong>Ressonância magnética</strong>...</li>
+        <li><strong>Lasers</strong>...</li>
+        <li><strong>Painéis solares</strong>...</li>
+        <li><strong>Chips eletrônicos</strong>...</li>
+      </ul>
+    </section>
+  </main>
+  <div class="back-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">⬆ Topo</div>
+  <footer>© 2025 Mundo Quântico • Desenvolvido com curiosidade científica ⚛️</footer>
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+    }
+  </script>
+</body>
+</html>
